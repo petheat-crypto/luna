@@ -11,8 +11,10 @@ test('Vercel static bundle embeds the login from auth subdomain and permits only
   const settings=JSON.parse(fs.readFileSync(path.join(__dirname,'vercel.json'),'utf8'));
   assert.ok(html.includes('https://auth.owlet.bond/planner-login.html'));
   assert.ok(html.includes('https://auth.owlet.bond'));
+  assert.ok(html.includes("'www.owlet.bond'"));
   assert.ok(frame.includes('https://owlet.bond'));
-  assert.ok(settings.headers.some(h=>h.source==='/planner-login.html'&&h.headers.some(x=>x.key==='Content-Security-Policy'&&x.value.includes('frame-ancestors https://owlet.bond'))));
+  assert.ok(frame.includes('https://www.owlet.bond'));
+  assert.ok(settings.headers.some(h=>h.source==='/planner-login.html'&&h.headers.some(x=>x.key==='Content-Security-Policy'&&x.value.includes('frame-ancestors https://owlet.bond https://www.owlet.bond'))));
 });
 
 test('planner server serves the standalone hash-router app', async (t) => {
