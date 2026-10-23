@@ -5,6 +5,16 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 
+test('help page is reachable at /help and linked from the app', () => {
+  const html=fs.readFileSync(path.join(__dirname,'docs','index.html'),'utf8');
+  const page=fs.readFileSync(path.join(__dirname,'docs','help','index.html'),'utf8');
+  const settings=JSON.parse(fs.readFileSync(path.join(__dirname,'vercel.json'),'utf8'));
+  assert.ok(page.includes('<h1>Помощь'));
+  assert.ok(page.includes('localStorage'));
+  assert.ok(html.includes('href="help/"'));
+  assert.ok(settings.rewrites.some(r=>r.source==='/help'&&r.destination==='/help/index.html'));
+});
+
 test('Vercel static bundle embeds the login from auth subdomain and permits only expected parent sites', () => {
   const html=fs.readFileSync(path.join(__dirname,'docs','index.html'),'utf8');
   const frame=fs.readFileSync(path.join(__dirname,'docs','planner-login.html'),'utf8');

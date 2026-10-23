@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>Помощь — Луна Академия: Мои дела</title>
+  <style>
+    :root{--ink:#102a38;--muted:#344c59;--paper:#f7f5ef;--white:#fff;--line:#7a8991;--green:#155a43;--pale:#e3efe7;--gold:#f3e4b6}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 Arial,'Open Sans',sans-serif}
+    .wrap{max-width:850px;margin:auto;padding:24px}
+    header{border-bottom:2px solid var(--line);padding:4px 0 18px}
+    .brand{font:bold 20px Georgia,serif;color:var(--green)}
+    h1,h2{font-family:Georgia,'Times New Roman',serif;line-height:1.25}
+    h1{font-size:38px;margin:24px 0 8px}
+    .lead{color:var(--muted);margin:0 0 22px}
+    section{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+    h2{font-size:23px;margin:0 0 8px}
+    p{margin:6px 0}
+    code{font:600 16px/1.5 Consolas,monospace;background:var(--pale);padding:2px 6px;border-radius:5px}
+    .note{background:#fff7df;border-left:5px solid #a77b17;padding:12px 16px;border-radius:6px;margin:18px 0}
+    .back{display:inline-block;margin-top:12px;padding:12px 18px;border-radius:9px;background:var(--green);color:#fff;text-decoration:none;font-weight:bold}
+    .back:hover{background:#104632}
+    a:focus-visible{outline:4px solid #935800;outline-offset:3px}
+    @media(max-width:600px){.wrap{padding:16px}h1{font-size:32px}section{padding:15px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header><div class="brand">Луна Академия · Мои дела</div></header>
+    <h1>Помощь</h1>
+    <p class="lead">Короткая инструкция по планировщику.</p>
+
+    <section>
+      <h2>Вход</h2>
+      <p>Для демонстрации можно войти как <code>nina</code> с паролем <code>1234</code> или как <code>test</code> с паролем <code>test</code>. Также доступна кнопка «Войти через Google».</p>
+    </section>
+
+    <section>
+      <h2>Добавить дело</h2>
+      <p>Нажмите «Добавить дело», выберите готовый шаблон или впишите название. Затем задайте день, время и повторение и нажмите «Сохранить дело».</p>
+    </section>
+
+    <section>
+      <h2>Отметить выполненным</h2>
+      <p>Нажмите «Сделано» у дела. Оно появится в разделе «Сделано». Если отметили случайно, нажмите «Вернуть в дела».</p>
+    </section>
+
+    <div class="note"><strong>Важно:</strong> дела сохраняются в localStorage этого браузера. Они не синхронизируются между устройствами; очистка данных сайта в браузере может удалить сохранённый список.</div>
+
+    <a class="back" href="../">← Вернуться к делам</a>
+  </main>
+</body>
+</html>
