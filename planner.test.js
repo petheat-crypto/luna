@@ -2,6 +2,18 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { createServer } = require('./planner-server');
 const crypto = require('node:crypto');
+const fs = require('node:fs');
+const path = require('node:path');
+
+test('Vercel static bundle embeds the login from auth subdomain and permits only expected parent sites', () => {
+  const html=fs.readFileSync(path.join(__dirname,'docs','index.html'),'utf8');
+  const frame=fs.readFileSync(path.join(__dirname,'docs','planner-login.html'),'utf8');
+  const settings=JSON.parse(fs.readFileSync(path.join(__dirname,'vercel.json'),'utf8'));
+  assert.ok(html.includes('https://auth.owlet.bond/planner-login.html'));
+  assert.ok(html.includes('https://auth.owlet.bond'));
+  assert.ok(frame.includes('https://owlet.bond'));
+  assert.ok(settings.headers.some(h=>h.source==='/planner-login.html'&&h.headers.some(x=>x.key==='Content-Security-Policy'&&x.value.includes('frame-ancestors https://owlet.bond'))));
+});
 
 test('planner server serves the standalone hash-router app', async (t) => {
   const server = createServer();
